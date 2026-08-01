@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>UMSS - Estado de Inscripción</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="assets/logo-umss.png" alt="Logo UMSS" />
+    <div>
+      <div class="titulo">UMSS</div>
+      <div class="subtitulo">Universidad Mayor de San Simón</div>
+    </div>
+  </div>
+  <div class="topbar-usuario">
+    <span data-nombre-usuario></span>
+    <button class="logout" data-logout title="Cerrar sesión">&#x2192;&#x2503;</button>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <a href="estado.html" class="activo">&#128203; Estado de Inscripción</a>
+    <a href="kardex.html">&#128196; Kardex</a>
+    <a href="inscripcion.html">&#9998; Inscripción</a>
+    <a href="malla.html">&#9638; Malla Curricular</a>
+  </div>
+
+  <div class="contenido">
+    <h1 id="titulo-estado">Inscripción Semestral UMSS</h1>
+
+    <div id="sin-datos" class="card centro-vacio" style="display:none;">
+      Aún no tienes una inscripción registrada para esta gestión.
+      <br/><br/>
+      <a href="inscripcion.html" class="btn btn-secundario" style="display:inline-block;">Ir a Inscripción</a>
+    </div>
+
+    <div id="contenedor-datos" style="display:none;">
+      <div class="alerta-exito">&#9989; Su inscripción ha sido procesada con éxito.</div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Sigla</th><th>Materia</th><th>Grupo</th><th>Docente</th><th>Aula</th><th>Modalidad</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="tabla-materias"></tbody>
+        </table>
+      </div>
+
+      <div class="footer-stats">
+        <div class="stat-box">Total Materias Inscritas: <b id="total-materias">0</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/estado.js"></script>
+</body>
+</html>

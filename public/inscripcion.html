@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>UMSS - Inscripción</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="assets/logo-umss.png" alt="Logo UMSS" />
+    <div>
+      <div class="titulo">UMSS</div>
+      <div class="subtitulo">Universidad Mayor de San Simón</div>
+    </div>
+  </div>
+  <div class="topbar-usuario">
+    <span data-nombre-usuario></span>
+    <button class="logout" data-logout title="Cerrar sesión">&#x2192;&#x2503;</button>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <a href="estado.html">&#128203; Estado de Inscripción</a>
+    <a href="kardex.html">&#128196; Kardex</a>
+    <a href="inscripcion.html" class="activo">&#9998; Inscripción</a>
+    <a href="malla.html">&#9638; Malla Curricular</a>
+  </div>
+
+  <div class="contenido">
+    <h1>Inscripción</h1>
+
+    <!-- VISTA 0: Portal de pagos -->
+    <div id="vista-pago" class="card" style="display:none;">
+      <div class="pago-layout">
+        <div class="pago-banco">
+          <div class="pago-banco-header">
+            <b>UMSS</b> &middot; Portal de Pagos
+          </div>
+          <div class="pago-banco-body">
+            <div class="form-group"><label>Matrícula Semestral: 12 Bs</label></div>
+            <div class="form-group"><label>Banco</label><input type="text" value="Banco Unión" disabled/></div>
+            <div class="form-group"><input type="text" id="pago-usuario" placeholder="Usuario"/></div>
+            <div class="form-group"><input type="password" id="pago-clave" placeholder="Contraseña"/></div>
+            <div id="pago-error" class="alerta-error" style="display:none;"></div>
+            <button id="btn-pagar" class="btn btn-primario">Pagar</button>
+          </div>
+        </div>
+        <div class="pago-resultado" id="pago-resultado" style="display:none;">
+          <div>&#9989;</div>
+          <b>PAGO CONFIRMADO</b>
+          <div style="font-size:13px;color:#6b7280;margin-top:10px;">Código de acceso:</div>
+          <div class="codigo-generado" id="codigo-generado"></div>
+          <button id="btn-continuar-codigo" class="btn btn-secundario">Continuar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTA 1: Ingreso de código -->
+    <div id="vista-codigo" class="card" style="display:none;">
+      <div class="form-group">
+        <label>Ingrese su Código de Acceso</label>
+        <div style="display:flex; gap:10px;">
+          <input type="text" id="input-codigo" placeholder="Ej: INF-2026-001" />
+          <button id="btn-validar-codigo" class="btn btn-icono">&#10003;</button>
+        </div>
+      </div>
+      <div id="codigo-error" class="alerta-error" style="display:none;"></div>
+      <div style="font-size:13px;color:#6b7280;">
+        ¿No tienes un código? <a href="#" id="link-ir-pago" style="color:#1c3f8b;font-weight:600;">Paga tu matrícula aquí</a>
+      </div>
+    </div>
+
+    <!-- VISTA 2: Selección de materias -->
+    <div id="vista-materias" style="display:none;">
+      <div class="insc-layout">
+        <div class="insc-principal">
+          <div class="card">
+            <div class="form-group">
+              <label>Código de acceso activo</label>
+              <input type="text" id="codigo-activo" disabled />
+            </div>
+          </div>
+          <div id="lista-semestres"></div>
+        </div>
+        <div class="insc-carrito card">
+          <h3 style="margin-top:0;">Materias Seleccionadas (<span id="carrito-cantidad">0</span>)</h3>
+          <div id="carrito-lista"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: selección de grupo -->
+<div id="modal-fondo" class="modal-fondo" style="display:none;">
+  <div class="modal-caja">
+    <div class="modal-header">
+      <div>
+        <h3>Selección Detallada de Grupo</h3>
+        <div id="modal-materia-nombre" style="color:#6b7280;font-size:14px;"></div>
+      </div>
+      <button class="modal-cerrar" id="modal-cerrar">&times;</button>
+    </div>
+    <table>
+      <thead><tr><th>Grupo</th><th>Docente</th><th>Horario</th><th>Cupos</th><th></th></tr></thead>
+      <tbody id="modal-tabla-grupos"></tbody>
+    </table>
+    <div id="modal-sin-grupos" class="centro-vacio" style="display:none;">No hay grupos ofertados para esta materia todavía.</div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/inscripcion.js"></script>
+</body>
+</html>

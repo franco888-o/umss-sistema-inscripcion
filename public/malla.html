@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>UMSS - Malla Curricular</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <img src="assets/logo-umss.png" alt="Logo UMSS" />
+    <div>
+      <div class="titulo">UMSS</div>
+      <div class="subtitulo">Universidad Mayor de San Simón</div>
+    </div>
+  </div>
+  <div class="topbar-usuario">
+    <span data-nombre-usuario></span>
+    <button class="logout" data-logout title="Cerrar sesión">&#x2192;&#x2503;</button>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <a href="estado.html">&#128203; Estado de Inscripción</a>
+    <a href="kardex.html">&#128196; Kardex</a>
+    <a href="inscripcion.html">&#9998; Inscripción</a>
+    <a href="malla.html" class="activo">&#9638; Malla Curricular</a>
+  </div>
+
+  <div class="contenido">
+    <h1>Malla Curricular &mdash; <span data-carrera-usuario></span></h1>
+    <div id="malla-contenedor"></div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/malla.js"></script>
+</body>
+</html>
