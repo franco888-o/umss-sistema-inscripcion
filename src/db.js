@@ -7,6 +7,10 @@ const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'umss_db',
+  // Configuración de SSL para conectar con Neon en producción
+  ssl: process.env.DB_HOST && process.env.DB_HOST !== 'localhost' 
+    ? { rejectUnauthorized: false } 
+    : false,
 });
 
 pool.on('error', (err) => {
